@@ -1,4 +1,4 @@
-rootProject.name = "VersatiaExample-Template"
+rootProject.name = "VersatiaExample-Modules-Database"
 
 pluginManagement {
     repositories {
@@ -24,4 +24,3 @@ dependencyResolutionManagement {
         }
     }
 }
-

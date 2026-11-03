@@ -1,9 +1,10 @@
-name: VersatiaExample-Template
+name: VersatiaExample-Modules-Database
 version: '${version}'
-main: com.github.marcoral.versatia.example.template.ExamplePlugin
+main: com.github.marcoral.versatia.example.database.MarketPlugin
 api-version: '1.21'
 author: Versatia
-description: One Versatia feature, shown as simply as possible.
+description: Player coins kept in a database with no setup, through the Database module.
 # Kotlin and kotlinx.coroutines classes come from VersatiaCore's class loader; do not list kotlin-stdlib or kotlinx-coroutines here
 depend:
   - VersatiaCore
+  - VersatiaModule-Database
