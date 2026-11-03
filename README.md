@@ -2,9 +2,9 @@
 
 Player coins kept in a database with no setup: inject `Database` from the Database module and the plugin gets a SQLite file in its data folder, with the migrations from `database/migrations` in its JAR applied. A player store, `class Profiles(database: Database) : PlayerStore<Profile> by database.playerStore("profiles", Profile::uuid, ...)`, loads each profile before its player joins and saves it on quit; coins change in memory with `profiles.update(player) { ... }`, and work that needs the database runs on its threads and comes back with `thenSync { }` or `await()`.
 
-Part of the [Versatia examples](https://github.com/VersatiaFramework/VersatiaExamples); documentation: [Database module](https://versatiaframework.github.io/VersatiaDocs/docs/modules/database).
+Part of the [Versatia examples](https://github.com/VersatiaFramework/VersatiaExamples); documentation: [Database module](https://versatia.dev/docs/modules/database).
 
-**Start with** [`Profiles.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/Profiles.kt) and `src/main/resources/database/`, then [`Rewards.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/Rewards.kt), [`Bounties.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/Bounties.kt), [`LeaderboardTask.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/LeaderboardTask.kt) and [`AutosaveNotices.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/AutosaveNotices.kt). Every table and query name lives once, in [`Sql.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/Sql.kt): `playerStore(Tables.PROFILES, ...)`, `named(Queries.TOP_COINS, ...)`.
+**Start with** [`Profiles.kt`](src/main/kotlin/dev/versatia/example/database/Profiles.kt) and `src/main/resources/database/`, then [`Rewards.kt`](src/main/kotlin/dev/versatia/example/database/Rewards.kt), [`Bounties.kt`](src/main/kotlin/dev/versatia/example/database/Bounties.kt), [`LeaderboardTask.kt`](src/main/kotlin/dev/versatia/example/database/LeaderboardTask.kt) and [`AutosaveNotices.kt`](src/main/kotlin/dev/versatia/example/database/AutosaveNotices.kt). Every table and query name lives once, in [`Sql.kt`](src/main/kotlin/dev/versatia/example/database/Sql.kt): `playerStore(Tables.PROFILES, ...)`, `named(Queries.TOP_COINS, ...)`.
 
 ## What the log shows
 
@@ -18,7 +18,7 @@ Part of the [Versatia examples](https://github.com/VersatiaFramework/VersatiaExa
 ```
 
 The first four lines are the module's, at the first start only (later starts show `schema V3`);
-the last two come from `report()` in [`MarketPlugin.kt`](src/main/kotlin/com/github/marcoral/versatia/example/database/MarketPlugin.kt).
+the last two come from `report()` in [`MarketPlugin.kt`](src/main/kotlin/dev/versatia/example/database/MarketPlugin.kt).
 In game, every mob killed pays a coin, dying to a mob costs five when you have them, and killing a
 player takes a tenth of their coins: `Steve claims 4 coins, the bounty on Alex (payment #1)`.
 Every five minutes everyone reads `Richest: Steve (44), Alex (36)` and their own rank, and whenever
@@ -55,7 +55,7 @@ coins changed, the autosave announces itself: `Saving coins...`, then `Saved 2 p
 Requires JDK 21 and, in your local Maven repository, VersatiaStarter with what it exports
 (VersatiaAPI), VersatiaModule-Database (the module's API, which the starter does not export) and
 VersatiaCatalog, which supplies every version (`./gradlew publishToMavenLocal` in each checkout; see
-[Building the framework](https://versatiaframework.github.io/VersatiaDocs/docs/contributing/building));
+[Building the framework](https://versatia.dev/docs/contributing/building));
 running it requires a Paper 1.21.4 server with VersatiaCore and VersatiaModule-Database installed,
 and the [CommandAPI](https://commandapi.jorel.dev) 12.x plugin for `/versatia reload`.
 
@@ -68,6 +68,6 @@ To have the JAR copied to your server after every build, copy `local.properties.
 `build/generated/ksp/main/kotlin`; open it to see exactly what the runtime executes.
 
 The Versatia version is `versatiaVersion` in `gradle.properties`; `settings.gradle.kts` imports
-the matching [VersatiaCatalog](https://versatiaframework.github.io/VersatiaDocs/docs/getting-started/installation#versatia-catalog),
+the matching [VersatiaCatalog](https://versatia.dev/docs/getting-started/installation#versatia-catalog),
 so the build script writes `libs.versatia.starter` and
 `alias(libs.plugins.ksp)` instead of version numbers.

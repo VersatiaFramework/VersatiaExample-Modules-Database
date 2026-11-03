@@ -1,4 +1,4 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
 /** Every table and named query of the plugin in one place, so a name is written once and a typo does not compile. */
 object Sql {

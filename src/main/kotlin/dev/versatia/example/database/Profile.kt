@@ -1,4 +1,4 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
 import java.time.Instant
 import java.util.UUID

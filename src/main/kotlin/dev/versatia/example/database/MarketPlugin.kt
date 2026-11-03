@@ -1,12 +1,12 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
-import com.github.marcoral.versatia.FriendlyName
-import com.github.marcoral.versatia.Phase
-import com.github.marcoral.versatia.VersatiaPlugin
-import com.github.marcoral.versatia.database.Database
-import com.github.marcoral.versatia.database.list
-import com.github.marcoral.versatia.example.database.Sql.Queries
-import com.github.marcoral.versatia.lifecycle.AutoInvoke
+import dev.versatia.FriendlyName
+import dev.versatia.Phase
+import dev.versatia.VersatiaPlugin
+import dev.versatia.database.Database
+import dev.versatia.database.list
+import dev.versatia.example.database.Sql.Queries
+import dev.versatia.lifecycle.AutoInvoke
 
 /** `Database` is the module's prototype: this plugin's own database, its migrations from `database/migrations` already applied. */
 @FriendlyName("market")

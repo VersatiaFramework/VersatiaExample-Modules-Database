@@ -1,10 +1,10 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
-import com.github.marcoral.versatia.VersatiaEngine
-import com.github.marcoral.versatia.broadcast
-import com.github.marcoral.versatia.database.store.get
-import com.github.marcoral.versatia.database.store.update
-import com.github.marcoral.versatia.example.database.Sql.Tables
+import dev.versatia.VersatiaEngine
+import dev.versatia.broadcast
+import dev.versatia.database.store.get
+import dev.versatia.database.store.update
+import dev.versatia.example.database.Sql.Tables
 import java.util.UUID
 import java.util.logging.Logger
 import net.kyori.adventure.text.Component.text

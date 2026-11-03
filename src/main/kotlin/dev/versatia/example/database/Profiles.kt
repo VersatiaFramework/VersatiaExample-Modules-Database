@@ -1,10 +1,10 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
-import com.github.marcoral.versatia.database.Database
-import com.github.marcoral.versatia.database.playerStore
-import com.github.marcoral.versatia.database.store.PlayerStore
-import com.github.marcoral.versatia.di.LocalBean
-import com.github.marcoral.versatia.example.database.Sql.Tables
+import dev.versatia.database.Database
+import dev.versatia.database.playerStore
+import dev.versatia.database.store.PlayerStore
+import dev.versatia.di.LocalBean
+import dev.versatia.example.database.Sql.Tables
 import java.time.Instant
 import org.bukkit.entity.Player
 

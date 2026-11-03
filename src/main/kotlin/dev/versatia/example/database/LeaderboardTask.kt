@@ -1,13 +1,13 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
-import com.github.marcoral.versatia.VersatiaEngine
-import com.github.marcoral.versatia.broadcast
-import com.github.marcoral.versatia.database.await
-import com.github.marcoral.versatia.database.list
-import com.github.marcoral.versatia.database.single
-import com.github.marcoral.versatia.example.database.Sql.Queries
-import com.github.marcoral.versatia.task.BackgroundTask
-import com.github.marcoral.versatia.task.every
+import dev.versatia.VersatiaEngine
+import dev.versatia.broadcast
+import dev.versatia.database.await
+import dev.versatia.database.list
+import dev.versatia.database.single
+import dev.versatia.example.database.Sql.Queries
+import dev.versatia.task.BackgroundTask
+import dev.versatia.task.every
 import kotlin.time.Duration.Companion.minutes
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text

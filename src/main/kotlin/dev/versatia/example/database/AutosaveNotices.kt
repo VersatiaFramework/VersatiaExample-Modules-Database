@@ -1,9 +1,9 @@
-package com.github.marcoral.versatia.example.database
+package dev.versatia.example.database
 
-import com.github.marcoral.versatia.VersatiaEngine
-import com.github.marcoral.versatia.broadcast
-import com.github.marcoral.versatia.database.store.StoreAutosaveEndEvent
-import com.github.marcoral.versatia.database.store.StoreAutosaveStartEvent
+import dev.versatia.VersatiaEngine
+import dev.versatia.broadcast
+import dev.versatia.database.store.StoreAutosaveEndEvent
+import dev.versatia.database.store.StoreAutosaveStartEvent
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.event.EventHandler

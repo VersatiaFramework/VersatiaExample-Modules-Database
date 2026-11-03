@@ -1,6 +1,6 @@
 name: VersatiaExample-Modules-Database
 version: '${version}'
-main: com.github.marcoral.versatia.example.database.MarketPlugin
+main: dev.versatia.example.database.MarketPlugin
 api-version: '1.21'
 author: Versatia
 description: Player coins kept in a database with no setup, through the Database module.
