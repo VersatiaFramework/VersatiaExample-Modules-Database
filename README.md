@@ -52,11 +52,11 @@ coins changed, the autosave announces itself: `Saving coins...`, then `Saved 2 p
 
 ## Building
 
-Requires JDK 21 and, in your local Maven repository, VersatiaStarter with what it exports
+Requires JDK 25 and, in your local Maven repository, VersatiaStarter with what it exports
 (VersatiaAPI), VersatiaModule-Database (the module's API, which the starter does not export) and
 VersatiaCatalog, which supplies every version (`./gradlew publishToMavenLocal` in each checkout; see
 [Building the framework](https://versatia.dev/docs/contributing/building));
-running it requires a Paper 1.21.4 server with VersatiaCore and VersatiaModule-Database installed,
+running it requires a Paper 26.3 server with VersatiaCore and VersatiaModule-Database installed,
 and the [CommandAPI](https://commandapi.jorel.dev) 12.x plugin for `/versatia reload`.
 
 ```bash

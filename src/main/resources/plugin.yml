@@ -1,7 +1,7 @@
 name: VersatiaExample-Modules-Database
 version: '${version}'
 main: dev.versatia.example.database.MarketPlugin
-api-version: '1.21'
+api-version: '26.3'
 author: Versatia
 description: Player coins kept in a database with no setup, through the Database module.
 # Kotlin and kotlinx.coroutines classes come from VersatiaCore's class loader; do not list kotlin-stdlib or kotlinx-coroutines here
