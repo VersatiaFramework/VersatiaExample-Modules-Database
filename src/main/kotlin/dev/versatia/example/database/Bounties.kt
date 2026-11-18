@@ -5,10 +5,10 @@ import dev.versatia.broadcast
 import dev.versatia.database.store.get
 import dev.versatia.database.store.update
 import dev.versatia.example.database.Sql.Tables
+import dev.versatia.text.Text
+import dev.versatia.text.arg
 import java.util.UUID
 import java.util.logging.Logger
-import net.kyori.adventure.text.Component.text
-import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
@@ -17,7 +17,7 @@ import org.bukkit.event.entity.PlayerDeathEvent
 data class Payment(val id: Long = 0, val payer: UUID, val payee: UUID, val coins: Long, val note: String)
 
 /** A player kill moves a tenth of the victim's coins to the killer and logs the payment in one transaction; the cached profiles change only if it commits. */
-class Bounties(private val profiles: Profiles, private val logger: Logger) : Listener {
+class Bounties(private val profiles: Profiles, private val logger: Logger, private val text: Text) : Listener {
     @EventHandler
     fun onDeath(event: PlayerDeathEvent) {
         val victim = event.player
@@ -31,12 +31,14 @@ class Bounties(private val profiles: Profiles, private val logger: Logger) : Lis
             insertReturning(Tables.PAYMENTS, Payment(payer = victim.uniqueId, payee = killer.uniqueId, coins = bounty, note = note))
         }.thenSync { payment ->
             if (payment != null) VersatiaEngine.broadcast(
-                text(killer.name, NamedTextColor.AQUA).append(text(" claims ", NamedTextColor.GOLD)).append(text("${payment.coins} coins", NamedTextColor.AQUA))
-                    .append(text(", the ${payment.note} (payment #${payment.id})", NamedTextColor.GOLD)),
+                text.parse(
+                    "<positive>{killer} claims {coins} coins, the {note} (payment #{id})",
+                    arg("killer", killer), arg("coins", payment.coins), arg("note", payment.note), arg("id", payment.id),
+                ),
             )
         }.onFailureSync {
             logger.warning("The $note was not paid: ${it.message}")
-            killer.sendMessage(text("The bounty could not be paid; nobody lost coins", NamedTextColor.RED))
+            killer.sendMessage(text.parse("<negative>The bounty could not be paid; nobody lost coins"))
         }
     }
 }

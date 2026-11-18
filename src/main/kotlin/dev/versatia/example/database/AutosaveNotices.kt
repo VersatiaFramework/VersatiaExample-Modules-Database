@@ -4,8 +4,8 @@ import dev.versatia.VersatiaEngine
 import dev.versatia.broadcast
 import dev.versatia.database.store.StoreAutosaveEndEvent
 import dev.versatia.database.store.StoreAutosaveStartEvent
-import net.kyori.adventure.text.Component.text
-import net.kyori.adventure.text.format.NamedTextColor
+import dev.versatia.text.arg
+import dev.versatia.text.text
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 
@@ -13,7 +13,7 @@ import org.bukkit.event.Listener
 class AutosaveNotices(private val plugin: MarketPlugin) : Listener {
     @EventHandler
     fun onStart(event: StoreAutosaveStartEvent) {
-        if (event.plugin == plugin) VersatiaEngine.broadcast(text("Saving coins...", NamedTextColor.GRAY))
+        if (event.plugin == plugin) VersatiaEngine.broadcast(plugin.text.parse("<neutral>Saving coins..."))
     }
 
     @EventHandler
@@ -21,8 +21,8 @@ class AutosaveNotices(private val plugin: MarketPlugin) : Listener {
         if (event.plugin != plugin) return
         val duration = event.duration.inWholeMilliseconds
         VersatiaEngine.broadcast(
-            if (event.failed == 0) text("Saved ", NamedTextColor.GRAY).append(text(event.saved, NamedTextColor.AQUA)).append(text(" profiles in ")).append(text("$duration ms", NamedTextColor.AQUA))
-            else text("Saving ", NamedTextColor.RED).append(text(event.failed, NamedTextColor.YELLOW)).append(text(" profiles failed; they are retried at the next autosave")),
+            if (event.failed == 0) plugin.text.parse("<neutral>Saved {saved} profiles in {duration} ms", arg("saved", event.saved), arg("duration", duration))
+            else plugin.text.parse("<negative>Saving {failed} profiles failed; they are retried at the next autosave", arg("failed", event.failed)),
         )
     }
 }
